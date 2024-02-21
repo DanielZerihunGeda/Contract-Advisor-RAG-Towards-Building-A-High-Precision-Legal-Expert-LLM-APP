@@ -1,0 +1,5 @@
+langchain == 0.1.7
+langchain-openai == 0.0.6
+matplotlib == 3.8.3
+scikit-learn == 1.4.1.post1
+angchain langchain_openai langchainhub
