@@ -1,6 +1,4 @@
-
-def combine_sentences(sentences, buffer_size=2):
-    sentences = [{'sentence': x, 'index' : i} for i, x in enumerate(single_sentences_list)]
+def combine_sentences(sentences, buffer_size=1):
     # Go through each sentence dict
     for i in range(len(sentences)):
 
@@ -29,4 +27,3 @@ def combine_sentences(sentences, buffer_size=2):
         sentences[i]['combined_sentence'] = combined_sentence
 
     return sentences
-
