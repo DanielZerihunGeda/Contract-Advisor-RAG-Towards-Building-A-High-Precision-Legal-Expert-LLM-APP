@@ -4,7 +4,7 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores.utils import filter_complex_metadata
-from agentic_chunker import AgenticChunker
+from Retriever.agentic_chunker import AgenticChunker
 
 class ChatPDF:
     vector_store = None
