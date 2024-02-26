@@ -26,6 +26,16 @@ Elevate user experience with our service that evaluates and ranks prompts based 
 run rag.py to execute it using agentic chunking which requires llm model to create chunks 
 run app.py to run it using semantic chunking technics
 
+make sure to set-up `.env` 
+
+```bash
+OPENAI_API_KEY = "..."
+MISTRAL_API_KEY = "..."
+ACTIVELOOP_TOKEN = ""
+DEEPINFRA_API_TOKEN = "..."
+COHERE_API_KEY = "..."
+```
+
 ## Contributing
 
 We welcome contributions from the community! Please review our [Contribution Guidelines](CONTRIBUTING.md) for detailed information on how to contribute to PromptlyTech.
