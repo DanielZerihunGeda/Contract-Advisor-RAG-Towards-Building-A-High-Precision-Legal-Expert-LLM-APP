@@ -1,66 +1,48 @@
-import os
-import tempfile
 import streamlit as st
-from streamlit_chat import message
-from rag import ChatPDF
+from scripts.qafunction import create_conversational_qa_chain
 
-st.set_page_config(page_title="ChatBot")
+# Function to create the conversational QA chain
+def create_conversational_qa_chain_with_file(uploaded_file):
+    if uploaded_file is not None:
+        # Save the uploaded file to a temporary location
+        with open("temp_file", "wb") as f:
+            f.write(uploaded_file.read())
+        
+        # Call the function with the temporary file path
+        return create_conversational_qa_chain("temp_file")
+    else:
+        return None
 
+# Main function to run the Streamlit app
+def main():
+    st.title("Conversational QA System")
+    
+    # Chat interaction section
+    user_question = st.text_input("Enter your question:")
+    if st.button("Ask"):
+        uploaded_file = st.session_state.get("uploaded_file")
+        if uploaded_file is None:
+            st.text("Please upload a document file before asking questions.")
+        else:
+            conversational_qa_chain = create_conversational_qa_chain_with_file(uploaded_file)
+            if conversational_qa_chain:
+                example_message = conversational_qa_chain.invoke(
+                    {
+                        "question": user_question,
+                        "chat_history": [],  # For simplicity, we initialize an empty chat history
+                    }
+                )
+                # Display chat history
+                for message in example_message["chat_history"]:
+                    if message.sender == "human":
+                        st.text(f"You: {message.content}")
+                    elif message.sender == "bot":
+                        st.text(f"Bot: {message.content}")
 
-def display_messages():
-    st.subheader("Chat")
-    for i, (msg, is_user) in enumerate(st.session_state["messages"]):
-        message(msg, is_user=is_user, key=str(i))
-    st.session_state["thinking_spinner"] = st.empty()
-
-
-def process_input():
-    if st.session_state["user_input"] and len(st.session_state["user_input"].strip()) > 0:
-        user_text = st.session_state["user_input"].strip()
-        with st.session_state["thinking_spinner"], st.spinner(f"Thinking"):
-            agent_text = st.session_state["assistant"].ask(user_text)
-
-        st.session_state["messages"].append((user_text, True))
-        st.session_state["messages"].append((agent_text, False))
-
-
-def read_and_save_file():
-    st.session_state["assistant"].clear()
-    st.session_state["messages"] = []
-    st.session_state["user_input"] = ""
-
-    for file in st.session_state["file_uploader"]:
-        with tempfile.NamedTemporaryFile(delete=False) as tf:
-            tf.write(file.getbuffer())
-            file_path = tf.name
-
-        with st.session_state["ingestion_spinner"], st.spinner(f"Ingesting {file.name}"):
-            st.session_state["assistant"].ingest(file_path)
-        os.remove(file_path)
-
-
-def page():
-    if len(st.session_state) == 0:
-        st.session_state["messages"] = []
-        st.session_state["assistant"] = ChatPDF()
-
-    st.header("ChatPDF")
-
-    st.subheader("Upload a document")
-    st.file_uploader(
-        "Upload document",
-        type=["pdf"],
-        key="file_uploader",
-        on_change=read_and_save_file,
-        label_visibility="collapsed",
-        accept_multiple_files=True,
-    )
-
-    st.session_state["ingestion_spinner"] = st.empty()
-
-    display_messages()
-    st.text_input("Message", key="user_input", on_change=process_input)
-
+    # File upload section (hidden by default)
+    with st.expander("Upload Document File", expanded=False):
+        uploaded_file = st.file_uploader("", type=[".docx", ".pdf", ".txt"])
+        st.session_state["uploaded_file"] = uploaded_file
 
 if __name__ == "__main__":
-    page()
+    main()

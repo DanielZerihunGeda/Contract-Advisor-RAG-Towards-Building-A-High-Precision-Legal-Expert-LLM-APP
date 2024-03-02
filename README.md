@@ -1,40 +1,43 @@
-# Contract-Advisor-RAG-Towards-Building-A-High-Precision-Legal-Expert-LLM-APP
-autonomous contract bot, capable of drafting, reviewing, and negotiating contracts, independently, end-to-end, without human assistance
+# Contract Advisor: RAG - Building a High-Precision Legal Expert LLM Application
 
-## Key Services
+Contract Advisor is an advanced autonomous bot designed to revolutionize legal contract management. Leveraging cutting-edge language models (LLMs), it offers end-to-end contract drafting, reviewing, and negotiation capabilities without human intervention.
 
-### 1. Q & a with legal clause 
+## Key Features
 
-Empower your legal business with streamlined q&a , leveraging LLMs for generating high-quality, relevant content. Our service significantly reduces latency and expertise required for legal contract clause drafting , reviewing and Q&A session with given 
-contract clause  .
+### 1. Question & Answer with Legal Clause Generation
 
-### 2. Evaluation 
+Empower your legal business with streamlined Q&A capabilities, powered by LLMs for generating high-quality, relevant content. Our service significantly reduces latency and expertise required for legal contract clause drafting, reviewing, and Q&A sessions.
 
-the notebooks DataProcessing contains a number of mechanisms to process chunks and evaluate the retriever and generator components
+### 2. Evaluation Using RAG Pipeline
 
-### 3.Ranking Service
+The full RAG pipeline is rigorously tested and fine-tuned using industry-standard evaluation metrics to minimize noise and maximize relevancy and accuracy.
 
-Elevate user experience with our service that evaluates and ranks prompts based on effectiveness. Ensure accurate, contextually relevant responses from chatbots and virtual assistants, leading to improved user engagement and satisfaction.
+### 3. Support for Diverse Data Types
 
+Easily upload legal contract clauses or privacy policies in various formats, including text, HTML, PDFs, and Docxs.
 
 ## Getting Started
-1. **Clone the repository:** `git clone https://github.com/DanielZerihunGeda/Contract-Advisor-RAG-Towards-Building-A-High-Precision-Legal-Expert-LLM-APP`
 
+To get started with Contract Advisor, follow these simple steps:
 
-## Usage
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/DanielZerihunGeda/Contract-Advisor-RAG-Towards-Building-A-High-Precision-Legal-Expert-LLM-APP
 
-run rag.py to execute it using agentic chunking which requires llm model to create chunks 
-run app.py to run it using semantic chunking technics
+install dependencies using `pip install -r requirements.txt`
 
-make sure to set-up `.env` 
+set-up `.env` 
 
 ```bash
-OPENAI_API_KEY = "..."
-MISTRAL_API_KEY = "..."
-ACTIVELOOP_TOKEN = ""
-DEEPINFRA_API_TOKEN = "..."
-COHERE_API_KEY = "..."
+OPENAI_API_KEY="Your_OpenAI_API_Key"
+MISTRAL_API_KEY="Your_Mistral_API_Key"
+ACTIVELOOP_TOKEN="Your_ActiveLoop_Token"
+DEEPINFRA_API_TOKEN="Your_DeepInfra_API_Token"
+COHERE_API_KEY="Your_CoHere_API_Key"
+
 ```
+run the streamlit app using `streamlit run app.py`
+![Alt Text 1](screenshot/streamlit.png)
 
 ## Contributing
 
@@ -42,10 +45,8 @@ We welcome contributions from the community! Please review our [Contribution Gui
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE.md) - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the Apache License 2.0. See the LICENSE.md file for details.
 
 ## Contact
 
-For inquiries and support, please contact us at @here
-
----
+For inquiries and support, please contact us at @lenjisa@gmail.com
