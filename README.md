@@ -37,7 +37,7 @@ COHERE_API_KEY="Your_CoHere_API_Key"
 
 ```
 run the streamlit app using `streamlit run app.py`
-![Alt Text 1](screenshot/streamlit.png)
+![Alt Text 1](screenshots/streamlit.png)
 
 ## Contributing
 
