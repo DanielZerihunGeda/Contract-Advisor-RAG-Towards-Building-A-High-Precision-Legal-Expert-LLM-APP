@@ -1,5 +1,7 @@
 # Contract Advisor: RAG - Building a High-Precision Legal Expert LLM Application
 
+[![Python CI](https://github.com/DanielZerihunGeda/Contract-Advisor-RAG-Towards-Building-A-High-Precision-Legal-Expert-LLM-APP/actions/workflows/python.yml/badge.svg)](https://github.com/DanielZerihunGeda/Contract-Advisor-RAG-Towards-Building-A-High-Precision-Legal-Expert-LLM-APP/actions/workflows/python.yml)
+
 Contract Advisor is an advanced autonomous bot designed to revolutionize legal contract management. Leveraging cutting-edge language models (LLMs), it offers end-to-end contract drafting, reviewing, and negotiation capabilities without human intervention.
 
 ## Key Features
