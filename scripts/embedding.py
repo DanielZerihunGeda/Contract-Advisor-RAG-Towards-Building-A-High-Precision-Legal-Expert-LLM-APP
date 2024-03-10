@@ -1,10 +1,7 @@
 import spacy
 
-# Load the spaCy embedder
-
-
-
 def get_sentence_embeddings(sentences):
+    # Load the spaCy embedder
     nlp = spacy.load('en_core_web_sm')
 
 # Create embedding vectors for the input sentences using the spaCy embedder

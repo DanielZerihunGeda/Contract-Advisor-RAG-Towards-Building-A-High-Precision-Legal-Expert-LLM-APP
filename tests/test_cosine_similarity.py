@@ -13,7 +13,7 @@ class TestCalculateCosineDistances(unittest.TestCase):
             {'combined_sentence_embedding': np.array([3, 4, 5])}
         ]
 
-        expected_distances = [0.0022689286287753465, 0.0022689286287753465]
+        expected_distances = [0.007416666029069652, 0.0020711102661086223]
 
         distances, sentences_with_distances = calculate_cosine_distances(sentences)
         self.assertEqual(distances, expected_distances)

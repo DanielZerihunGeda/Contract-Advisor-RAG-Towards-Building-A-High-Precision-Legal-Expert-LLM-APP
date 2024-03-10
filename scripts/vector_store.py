@@ -1,9 +1,9 @@
-from scripts.splitter import split_into_sentences_from_file 
-from scripts.chunk import group_sentences_by_distance_threshold
-from scripts.cosine_similarity import calculate_cosine_distances
-from scripts.embedding import get_sentence_embeddings
-from scripts.indexing import local_index
-from scripts.combine import combine_sentences
+from splitter import split_into_sentences_from_file 
+from chunk import group_sentences_by_distance_threshold
+from cosine_similarity import calculate_cosine_distances
+from embedding import get_sentence_embeddings
+from indexing import local_index
+from combine import combine_sentences
 from langchain_community.embeddings.spacy_embeddings import SpacyEmbeddings
 from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
@@ -33,8 +33,11 @@ def process_file_and_generate_vectorstore(file_path):
 
     # Create a FAISS vector store from the chunks of text
     vectorstore = FAISS.from_texts(chunks, embedding=embeddings)
-    
-    retriever = vectorstore.as_retriever(search_kwargs={"k" : 20}) 
+
+    #initializing the retriever
+    retriever = vectorstore.as_retriever(search_kwargs={"k" : 20})
+
+    #intitializing cohere re-ranking to return re-ranked chunks 
     compressor = CohereRerank()
 
     compression_retriever = ContextualCompressionRetriever(

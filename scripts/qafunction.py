@@ -8,7 +8,7 @@ from langchain_openai import ChatOpenAI
 from langchain.schema import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.prompts.prompt import PromptTemplate
-from scripts.vector_store import process_file_and_generate_vectorstore
+from vector_store import process_file_and_generate_vectorstore
 
 def create_conversational_qa_chain(file_path):
     retriever = process_file_and_generate_vectorstore(file_path)

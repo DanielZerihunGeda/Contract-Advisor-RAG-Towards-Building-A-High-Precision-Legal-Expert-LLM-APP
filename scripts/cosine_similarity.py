@@ -18,7 +18,7 @@ def calculate_cosine_distances(sentences):
         # Store distance in the dictionary
         sentences[i]['distance_to_next'] = distance
 
-    # Optionally handle the last sentence
-    # sentences[-1]['distance_to_next'] = None  # or a default value
+        # Optionally handle the last sentence
+        #sentences[-1]['distance_to_next'] = None  # or a default value
 
     return distances, sentences
