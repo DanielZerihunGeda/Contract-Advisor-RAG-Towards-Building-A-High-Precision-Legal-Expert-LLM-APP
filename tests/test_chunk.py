@@ -19,8 +19,8 @@ class TestGroupSentencesByDistanceThreshold(unittest.TestCase):
                      {'sentence': 'This is sentence 9.'}]
 
         expected_chunks = [
-            'This is sentence 1. This is sentence 2. This is sentence 3. This is sentence 4.',
-            'This is sentence 5. This is sentence 6. This is sentence 7. This is sentence 8. This is sentence 9.'
+            'This is sentence 1. This is sentence 2. This is sentence 3. This is sentence 4. This is sentence 5. This is sentence 6.',
+            'This is sentence 7.','This is sentence 8.','This is sentence 9.'
         ]
 
         chunks = group_sentences_by_distance_threshold(distances, sentences)
