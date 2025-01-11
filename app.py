@@ -1,18 +1,5 @@
 import streamlit as st
-"""#from scripts.qafunction import create_conversational_qa_chain
 
-# Function to create the conversational QA chain
-def create_conversational_qa_chain_with_file(uploaded_file):
-    if uploaded_file is not None:
-        # Save the uploaded file to a temporary location
-        with open("temp_file", "wb") as f:
-            f.write(uploaded_file.read())
-        
-        # Call the function with the temporary file path
-        return create_conversational_qa_chain("temp_file")
-    else:
-        return None
-"""
 # Main function to run the Streamlit app
 def main():
     st.title("Conversational QA System")
