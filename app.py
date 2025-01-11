@@ -2,7 +2,7 @@ import streamlit as st
 
 # Main function to run the Streamlit app
 def main():
-    st.title("Conversational QA System")
+    st.title("Contract Advisory Chatbot")
     
     # Chat interaction section
     user_question = st.text_input("Enter your question:")
