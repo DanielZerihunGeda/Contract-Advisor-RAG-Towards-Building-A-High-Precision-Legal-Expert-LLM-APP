@@ -1,5 +1,5 @@
 import streamlit as st
-from scripts.qafunction import create_conversational_qa_chain
+#from scripts.qafunction import create_conversational_qa_chain
 
 # Function to create the conversational QA chain
 def create_conversational_qa_chain_with_file(uploaded_file):
