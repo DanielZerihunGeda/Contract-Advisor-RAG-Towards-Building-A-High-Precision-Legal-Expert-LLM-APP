@@ -2,34 +2,24 @@ import streamlit as st
 
 # Main function to run the Streamlit app
 def main():
+  with st.sidebar:
+    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+    "[View the source code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
+    "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+
     st.title("Contract Advisory Chatbot")
-    
+    if prompt := st.chat_input():
+    if not openai_api_key:
+        st.info("Please add your OpenAI API key to continue.")
+        st.stop()
+
+        
     # Chat interaction section
-    user_question = st.text_input("Enter your question:")
-    if st.button("Ask"):
-        uploaded_file = st.session_state.get("uploaded_file")
-        if uploaded_file is None:
-            st.text("Please upload a document file before asking questions.")
-        else:
-            conversational_qa_chain = create_conversational_qa_chain_with_file(uploaded_file)
-            if conversational_qa_chain:
-                example_message = conversational_qa_chain.invoke(
-                    {
-                        "question": user_question,
-                        "chat_history": [],  # For simplicity, we initialize an empty chat history
-                    }
-                )
-                # Display chat history
-                for message in example_message["chat_history"]:
-                    if message.sender == "human":
-                        st.text(f"You: {message.content}")
-                    elif message.sender == "bot":
-                        st.text(f"Bot: {message.content}")
+    st.chat_message("user").write("Test")
+    st.chat_message("assistant").write("Flwos")
 
     # File upload section (hidden by default)
-    with st.expander("Upload Document File", expanded=False):
-        uploaded_file = st.file_uploader("", type=[".docx", ".pdf", ".txt"])
-        st.session_state["uploaded_file"] = uploaded_file
-
+    
 if __name__ == "__main__":
     main()
