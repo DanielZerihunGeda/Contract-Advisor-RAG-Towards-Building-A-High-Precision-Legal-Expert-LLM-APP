@@ -10,9 +10,9 @@ def main():
 
     st.title("Contract Advisory Chatbot")
     if prompt := st.chat_input():
-    if not openai_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
+      if not openai_api_key:
+          st.info("Please add your OpenAI API key to continue.")
+          st.stop()
 
         
     # Chat interaction section
