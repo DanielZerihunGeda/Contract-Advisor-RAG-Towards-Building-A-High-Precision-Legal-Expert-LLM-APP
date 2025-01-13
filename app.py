@@ -13,8 +13,8 @@ def main():
 
         
     # Chat interaction section
-    st.chat_message("user").write("Test")
-    st.chat_message("assistant").write("Flwos")
+    st.chat_message("user").write("User: hi")
+    st.chat_message("assistant").write("Asistant: hey there")
 
     # File upload section (hidden by default)
     
