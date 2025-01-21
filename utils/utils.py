@@ -476,7 +476,50 @@ def pd_read_file(path_glob="*.pkl", ignore_index=True,  cols=None, verbose=False
                 log('error', e)
     return dfall
 
+def pd_to_file(df, filei,  check=0, verbose=True, show='shape', index=False, sep="\t",   **kw):
+  """function pd_to_file.
+  Doc::
+          
+        Args:
+            df:   
+            filei:   
+            check:   
+            verbose:   
+            show:   
+            **kw:   
+        Returns:
+            
+  """
+  import os, gc
+  from pathlib import Path
+  parent = Path(filei).parent
+  os.makedirs(parent, exist_ok=True)
+  ext  = os.path.splitext(filei)[1]
+  if   ext == ".pkl" :       df.to_pickle(filei,  **kw)
+  elif ext == ".parquet" :   df.to_parquet(filei, **kw)
+  elif ext in [".csv" ,".txt"] :  
+    df.to_csv(filei, index=False, sep=sep, **kw)       
 
+  elif ext in [".json" ] :  
+    df.to_json(filei, **kw)       
+
+  else :
+      log('No Extension, using parquet')
+      df.to_parquet(filei + ".parquet", **kw)
+
+  if verbose in [True, 1] :  log(filei)        
+  if show == 'shape':        log(df.shape)
+  if show in [1, True] :     log(df)
+     
+  if check in [1, True, "check"] : log('Exist', os.path.isfile(filei))
+  #  os_file_check( filei )
+
+  # elif check =="checkfull" :
+  #  os_file_check( filei )
+  #  dfi = pd_read_file( filei, n_pool=1)   ### Full integrity
+  #  log("#######  Reload Check: ",  filei, "\n"  ,  dfi.tail(3).T)
+  #  del dfi; gc.collect()
+  gc.collect()
 
 
 
