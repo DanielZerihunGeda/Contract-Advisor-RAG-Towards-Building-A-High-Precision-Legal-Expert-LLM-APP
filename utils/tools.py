@@ -22,7 +22,7 @@ if "import":
     from pydantic import Field
     from angle_emb import AnglE
 
-    from utilmy import (pd_read_file, pd_to_file, log, glob_glob, json_save, json_load, date_now)
+    from utils import (pd_read_file, pd_to_file, log, glob_glob, date_now)
 
 
     from paperqa import Docs, Doc, LLMModel, EmbeddingModel, NumpyVectorStore
